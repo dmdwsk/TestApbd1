@@ -21,8 +21,7 @@ public class Dbservice : IDbService
         await using var connection = new SqlConnection(_configuration.GetConnectionString("Default"));
         await connection.OpenAsync();
         var command = new SqlCommand(@"
-            SELECT c.first_name, c.last_name, d.first_name, d.last_name, d.date,
-                   s.name, aps.service_fee
+            SELECT c.first_name, c.last_name, d.first_name, d.last_name, d.date
             FROM Delivery d
             JOIN CustomerDto c ON d.customer_id = c.customer_id
             JOIN DriverDto d1  ON  d.driver_id = d1.driver_id

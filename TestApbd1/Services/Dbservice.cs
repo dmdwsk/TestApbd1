@@ -29,9 +29,10 @@ public class Dbservice : IDbService
             JOIN DeliverysServiceDto dls ON dls.delivery_id = d.delivery_id
             Where d.delivery_id = @deliveryId
     }
+    }
 
-    public async Task<int> AddDeliveryAsync(DeliveryRequestDto request)
-    {
+      public async Task<int> AddDeliveryAsync(DeliveryRequestDto request)
+      {
         await using var connection = new SqlConnection(_configuration.GetConnectionString("Default"));
         await connection.OpenAsync();
         await using var transaction = (SqlTransaction)await connection.BeginTransactionAsync();

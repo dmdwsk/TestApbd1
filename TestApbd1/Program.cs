@@ -1,10 +1,11 @@
 ﻿
-using ConsoleApp1.Services;
+using TestApbd1.Services;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
-builder.Services.AddScoped<IDbService, DbService>();
+builder.Services.AddScoped<IDbService, Dbservice>();
 
 var app = builder.Build();
 

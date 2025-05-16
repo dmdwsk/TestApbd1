@@ -1,3 +1,15 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿
+using ConsoleApp1.Services;
 
-Console.WriteLine("Hello, World!");
+var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddControllers();
+builder.Services.AddScoped<IDbService, DbService>();
+
+var app = builder.Build();
+
+app.UseAuthorization();
+
+app.MapControllers();
+
+app.Run();
